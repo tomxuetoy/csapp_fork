@@ -1,0 +1,13 @@
+产生csapp.o文件：
+	gcc -O2 -c csapp.c
+
+编译：
+	gcc -O2 -o fork fork.c csapp.o -lpthread
+
+执行结果：
+maemo@maemo-desktop:~/repo/trial_fork.git$ ./fork
+parent: x=0
+maemo@maemo-desktop:~/repo/trial_fork.git$ child : x=2
+
+原因：父子进程拥有相同的但是独立的地址空间。它们都有相同的本地变量值，父进程和子进程对x所做的任何改变都是独立的，
+不会反映在另一个进程的存储器中。
